@@ -1,3 +1,5 @@
+package service;
+
 import com.test.example.Request;
 import com.test.example.Response;
 import com.test.example.TestServiceGrpc;
@@ -7,7 +9,7 @@ public class ServiceImpl extends TestServiceGrpc.TestServiceImplBase {
 
     @Override
     public void call(Request request, StreamObserver<Response> responseObserver) {
-        Response response = Response.newBuilder().setOutput("output").build();
+        Response response = Response.newBuilder().setOutput("output222222").build();
         responseObserver.onNext(response);
         responseObserver.onCompleted();
         System.out.println(response);

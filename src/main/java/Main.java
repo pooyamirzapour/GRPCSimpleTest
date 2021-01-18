@@ -1,4 +1,6 @@
+import grpc.ChannelManager;
 import io.grpc.ServerBuilder;
+import service.ServiceImpl;
 
 import java.io.IOException;
 import java.util.concurrent.Executors;
@@ -11,7 +13,10 @@ public class Main {
         io.grpc.Server server;
         ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(10);
         server = ServerBuilder.forPort(2000).addService(new ServiceImpl()).executor(executor).build().start();
-        server.awaitTermination();
         System.out.println(server);
+
+        ChannelManager.call();
+        server.awaitTermination();
+
     }
 }
